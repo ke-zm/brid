@@ -52,7 +52,7 @@ require.ensure([
                             this.style.display = 'none';
                         }
                     } else {
-                        window.open(url);
+                        window.open(url,'newWindow');
                     }
                 }
             }

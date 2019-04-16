@@ -1,0 +1,66 @@
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.mains {
+    height: 170px;
+    width: 205px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.download {
+    display: flex;
+    border: 2px solid #ABAAA6;
+    height: 60px;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 8px;
+    color: #5880B7;
+    text-decoration: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.download img {
+    height: 45px;
+    width: 50px;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.download span {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.wxtip {
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    display: none;
+}
+
+.wxtip_icon {
+    width: 84px;
+    height: 86px;
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.wxtip-txt {
+    margin-top: 72px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+}

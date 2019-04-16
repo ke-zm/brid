@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="en-us" class="border-box">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+	<meta name="keywords" content="中国一汽HR人力资源共享平台">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title ng-bind="pageTitle"></title>
+	<!-- <link rel="shortcut icon" href="assets/favicon.ico"> -->
+	<style>
+		body {
+		height: 100%;
+		width: 100%;
+		}
+
+		.mains {
+		height: 170px;
+		width: 205px;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		left: 50%;
+		}
+
+		.download {
+		display: flex;
+		border: 2px solid #ABAAA6;
+		height: 60px;
+		width: 200px;
+		background-color: #fff;
+		border-radius: 8px;
+		color: #5880B7;
+		text-decoration: none;
+		align-items: center;
+		justify-content: space-between;
+		}
+
+		.download img {
+		height: 45px;
+		width: 50px;
+		display: inline-block;
+		margin-left: 20px;
+		}
+
+		.download span {
+		display: inline-block;
+		margin-right: 20px;
+		}
+
+		.wxtip {
+		background: rgba(0, 0, 0, 0.8);
+		text-align: center;
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 998;
+		display: none;
+		}
+
+		.wxtip_icon {
+		width: 84px;
+		height: 86px;
+		display: block;
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		}
+
+		.wxtip-txt {
+		margin-top: 72px;
+		color: #fff;
+		font-size: 16px;
+		line-height: 1.5;
+		}
+	</style>
+</head>
+<body>
+	<div ng-controller="down" class="mains">
+		<a onclick="clicks()" href="" class="download"><img src="./img/download.png" alt=""><span>APP下载</span></a>
+	</div>
+	<div class="wxtip" id="JweixinTip">
+		<img class="wxtip_icon" src="./img/arrow.png" alt="">
+		<p class="wxtip-txt">点击右上角的按钮<br/>选择在浏览器中打开</p>
+	</div>
+</body>
+<script>
+	function clicks() {
+		var u = navigator.userAgent;
+		var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g\
+		var iosUrl = "itms-services://?action=download-manifest&url=https://downloadpkg.apicloud.com:443/zip/c1/98/c1986fdecef65958950c9bffca696ddd.plist";
+		var androidUrl = "http://downloadpkg.apicloud.com/app/download?path=http://A6091985490369.qiniucdn.apicloud-system.com/4b0bd671c7021e94d302d9714774aa22_d";
+		if (isIOS) {
+			window.open(iosUrl);
+			return
+		}
+		if (isAndroid) {
+			$scope.method.weixinTip(androidUrl);
+			return
+		}
+	}
+	function weixinTip(url) {
+		var btn2 = document.getElementById('android'); //下载二
+		var ua = navigator.userAgent;
+		if (/MicroMessenger/.test(window.navigator.userAgent)) {
+			window.event ? window.event.returnValue = false : e.preventDefault();
+			document.getElementById('JweixinTip').style.display = 'block';
+			document.getElementById('JweixinTip').onclick = function () {
+				this.style.display = 'none';
+			}
+		} else if (/AlipayClient/.test(window.navigator.userAgent)) {
+			window.event ? window.event.returnValue = false : e.preventDefault();
+			document.getElementById('JweixinTip').style.display = 'block';
+			
+			document.getElementById('JweixinTip').onclick = function () {
+				this.style.display = 'none';
+			}
+		} else if (ua.match(/QQ\/[0-9]/i) == "qq") {
+			window.event ? window.event.returnValue = false : e.preventDefault();
+			document.getElementById('JweixinTip').style.display = 'block';
+			document.getElementById('JweixinTip').onclick = function () {
+				this.style.display = 'none';
+			}
+		} else {
+			window.open(url);
+		}
+	}
+</script>
+</html>
